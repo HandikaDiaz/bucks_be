@@ -1,8 +1,8 @@
 import { LoginDto } from "../dto/login-dto";
 import { RegisterDto } from "../dto/register-dto";
 import * as authRepo from "../repositories/auth-repo";
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken'
+import * as bcrypt from 'bcrypt';
+import * as jwt from 'jsonwebtoken'
 
 export async function register(data: RegisterDto) {
     const existUser = await authRepo.findUserByEmailOrUsername(data.email)
