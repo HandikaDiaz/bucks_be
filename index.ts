@@ -13,14 +13,16 @@ app.use(cors({
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
+app.options("*", cors({
+    origin: ["https://bucks-fe.vercel.app", "http://localhost:3000"],
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+}));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.options("*", cors({
-    origin: "https://bucks-fe.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-}));
 
 app.use("/api", router);
 
