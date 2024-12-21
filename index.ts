@@ -1,4 +1,4 @@
-import * as cors  from "cors";
+import * as cors from "cors";
 import * as dotenv from "dotenv";
 import * as express from "express";
 import router from "./src/router/router";
@@ -8,13 +8,19 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: ["https://bucks-fe.vercel.app/", "http://localhost:3000"],
+    origin: ["https://bucks-fe.vercel.app", "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
     allowedHeaders: ["Content-Type", "Authorization"],
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+app.options("*", cors({
+    origin: "https://bucks-fe.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+}));
 
 app.use("/api", router);
 
