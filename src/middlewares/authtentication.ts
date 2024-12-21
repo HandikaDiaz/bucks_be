@@ -1,4 +1,4 @@
-import jwt from 'jsonwebtoken';
+import * as jwt from 'jsonwebtoken';
 import { NextFunction, Response } from "express";
 import { CustomRequest } from '../libs/custom-request';
 
