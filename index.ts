@@ -6,15 +6,8 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const corsOptions = {
-    origin: ["https://bucks-fe.vercel.app", "http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
-    allowedHeaders: ["Content-Type", "Authorization"],
-};
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions));
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
